@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <title>NeoDict-Dictionary App</title>
+    <link
+      rel="icon"
+      type="image/jpeg"
+      href="re.jpg"
+    />
+</head>
+<body>
+  
+<canvas id="matrixCanvas"></canvas>
+<div class="title-glitch-container">
+
+    <h3 class="glitch-text" id="animatedTitle"><center>NeoDict.</center></h3>
+
+</div>
+    <div class="container">
+        <div class="search-form">
+            <input type="text" placeholder="Type a word...">
+            <button><center>Search</center></button>
+        </div>
+        <div class="card">
+          
+          
+          
+          
+          
+          
+            <!-- <div class="single">
+                <span>Word:</span>
+                <span>Word</span>
+            </div>
+            <div class="single">
+                <span>Phonetic:</span>
+                <span>Phonetic</span>
+            </div>
+            <div class="single">
+                <span>Audio:</span>
+                <span>
+                    <audio controls src="https://api.dictionaryapi.dev/media/pronunciations/en/hello-uk.mp3"></audio>
+                </span>
+            </div>
+            <div class="single">
+                <span>Definition:</span>
+                <span>The word's definition goes here.</span>
+            </div>
+            <div class="single">
+                <span>Example:</span>
+                <span>Here you can find an example of the word.</span>
+            </div>
+            <div class="single">
+                <span>Parts Of Speech:</span>
+                <span>Parts, Of, Speech</span>
+            </div> -->
+        </div>
+    </div>
+    <footer class="footer">
+  <p>Developed by <span>Shoham Mallick</span></p>
+</footer>
+
+<script>
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = "Dictonary ".split("");
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#00ff88";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters[Math.floor(Math.random() * letters.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+
+            drops[i]++;
+        }
+    }
+
+    setInterval(drawMatrix, 33);
+
+    // Resize support
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+</script>
+
+<script>
+    const title = "Dictionary";
+    const animatedTitle = document.getElementById("animatedTitle");
+
+    // Optional: animate via JS (if you want character by character)
+    // animatedTitle.textContent = "";
+    // let index = 0;
+    // const interval = setInterval(() => {
+    //     animatedTitle.textContent += title[index];
+    //     index++;
+    //     if (index === title.length) clearInterval(interval);
+    // }, 150);
+</script>
+
+</body>
+</html>
