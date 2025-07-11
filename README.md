@@ -12,7 +12,7 @@
 - Footer credit: Developed by Shoham Mallick
 
 ### 🚀 Live Demo
-👉 [View NeoDict Online](https://shohammallick25.github.io/NeoDict.)
+👉 [View NeoDict Online](https://shohammallick25.github.io/NeoDict.-/)
 
 ### 📂 Project Structure
 - `index.html` - Main UI
